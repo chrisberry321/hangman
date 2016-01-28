@@ -11,13 +11,14 @@ describe("Game", function() {
 
   it("will check the solution word for a chosen letter", function() {
     var newHangmanGame = new Game();
-    expect(newHangmanGame.guess("z")).to.equal();
+    expect(newHangmanGame.guess("z")).to.equal(false);
   });
 
 
   it("will display an underscore for each letter in the array", function() {
     var newHangmanGame = new Game();
     var testWord = "flute";
+    debugger
     expect(underscore(testWord)).to.eql("_ _ _ _ _ ");
   });
 
