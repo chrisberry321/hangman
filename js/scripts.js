@@ -1,8 +1,10 @@
-
-// var alphabetArray = ["A", "B", "C"."D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+function Game() {
+  this.bodyPartCount = 0;
+}
 
 var Game = function() {
   var bandInstruments = ["clarinet", "piccolo", "trumpet", "tubas", "alto-saxophone", "timpani", "trombone", "flute", "french-horn", "snare-drum", "tenor saxophone"];
+
   this.solution = bandInstruments[Math.floor(Math.random()*bandInstruments.length)];
   this.solutionArray = this.solution.split("");
 }
@@ -11,7 +13,6 @@ var Game = function() {
 
 var underscore = function(solutionArray) {
   var underscoreArray = [];
-
   for (var i = 0; i < solutionArray.length; i++) {
     underscoreArray.push('_ ');
   }
@@ -20,100 +21,44 @@ var underscore = function(solutionArray) {
 
 /*** looks through the array for a matching letter ***/
 
-Game.prototype.guess = function(letter) {
-
-  var letterLocations = [];
+Game.prototype.guess = function(guessedLetter, incorrectGuessCounter) {
+  var arrayIndexLocation = [];
   for(var i = 0; i < this.solutionArray.length; i++) {
-    if (letter === this.solutionArray[i]) {
-      letterLocations.push(i);
+    if (guessedLetter === this.solutionArray[i]) {
+      arrayIndexLocation.push(i);
     } else {}
   }
-  if (letterLocations.length !== 0) {
-    return letterLocations;
+  if (arrayIndexLocation.length !== 0) {
+    return arrayIndexLocation;
   } else {
     return false;
-
-//     var decreaseGuessValue = function(incorrectGuessCounter, correctGuess, currentGuess, frontEndLetters) {
-//   if (letterLocations === false) {
-//     alert("Sorry! ''" + [i] + "'' is not in the word!");
-//     incorrectGuessCounter -= 1;
-//   }
-//   return incorrectGuessCounter;
-// }
-//   var revealCorrectLetter = function(currentIndex, currentGuess, frontEndLetters) {
-//     frontEndLetters[currentIndex] = currentGuess;
-//     return frontEndLetters;
-//   }
-//
-//   var winLoseCondition = function(incorrectGuessCounter, frontEndLetters) {
-//     if (incorrectGuessCounter === 0) {
-//       return "lose";
-//     }
-//
-//     var amountOfRevealedLetters = 0;
-//     for (var i = 0; i < frontEndLetters.length; i++) {
-//       if (frontEndLetters[i] != "_") {
-//         amountOfRevealedLetters += 1;
-//       }
-//     }
-//
-//     if (amountOfRevealedLetters === frontEndLetters.length) {
-//       return "win";
-//     }
-//
-//   }
-//
-//   var displayWord = function(frontEndLetters) {
-//     return frontEndLetters.toString().replace( /,/g, " " );
-//   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var click = 0;
-// if (click < 6) {
-//   click += 1;
-//}
-// else {return alert
-//
-//}
-
-
-    //   if (click === 1) {
-    //     show img 1
-    //   }
-    //   else if (click === 2) {
-    //     show img 2
-    //   }
-    //   else if (click === 3) {
-    //     show img 3
-    //   }
-    //   else if (click === 4) {
-    //     show img 4
-    //   }
-    //   else if (click === 5) {
-    //     show img 5
-    //   }
-    //   else {
-    //     show img 6
-      // }
+    alert("Sorry! ''" + guessedLetter + "'' is not in the word!");
+    incorrectGuessCounter += 1;
   }
+return incorrectGuessCounter;
+
+};
+// Displays the correct guessed letters back into the underscored Array
+
+// Game.prototype.revealLetters = function (guessedLetter) {
+//   for(var i = 0; i < this.solutionArray.length; i++) {
+//     if(this.solutionArray[i] === guessedLetter) {
+//       this.underscoredArray[i] = guessedLetter;
+//     }
+//   }
+//   console.log("Hi from reveal letters" + this.underscoredArray.join("") + " " + this.solutionArray);
+//   return this.underscoredArray.join("");
+// };
+
+// Determins if the game is over
+
+game.prototype.gameOverCheck = function () {
+  if(this.bodyPartCount >= 6) {
+    return true;
+  }
+  return false;
 };
 
 
-// REVEAL THE CORRECT LETTER
 
-
-  // var re = /guess/; //make this global
-  // console.log(re);
-  // var match = re.exec(this.solutionArray);
-  // var position = match.index;
+// var alphabetArray = ["A", "B", "C"."D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]

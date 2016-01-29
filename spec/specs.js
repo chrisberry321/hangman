@@ -18,7 +18,7 @@ describe("Game", function() {
   it("will display an underscore for each letter in the array", function() {
     var newHangmanGame = new Game();
     var testWord = "flute";
-    debugger
+
     expect(underscore(testWord)).to.eql("_ _ _ _ _ ");
   });
 
@@ -31,15 +31,13 @@ describe("Game", function() {
   it("will return an empty array each input that does not match the solutionArray", function() {
     var newHangmanGame = new Game();
     newHangmanGame.solutionArray = ["t", "r", "o", "m", "b", "o", "n", "e"];
-    // debugger;
     expect(newHangmanGame.guess("a")).to.equal(false);
   });
 
+  it("will replace a _ with the guessed letter if that letter is in the word", function() {
+    var newHangmanGame = new Game();
+    newHangmanGame.solutionArray = ["t", "r", "o", "m", "b", "o", "n", "e"];
+    // debugger;
+    expect(newHangmanGame.guess("t")).to.equal(["t"]);
+  });
 });
-// var newGameGame = new Answer();
-// var newPlayer = new Player();
-// expect(newPlayer.guess("o")).to.equal(true);
-//
-//
-//
-//
